@@ -16,8 +16,8 @@ public abstract class User {
     @Id
     @GeneratedValue(generator = "UUID")
     @Column(updatable = false, nullable = false, length=36)
-    private String id = UUID.randomUUID().toString();
-
+    private UUID id = UUID.randomUUID();
+    
     @Column(nullable = false, unique = true)
     private String username;
 
@@ -27,14 +27,14 @@ public abstract class User {
     @Column(nullable=false)
     private String password;
 
-    public User(String id, String username, String email, String password){
+    public User(UUID id, String username, String email, String password){
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
     }
 
-    public String getId(){ return id;}
+    public UUID getId(){ return id;}
     public String getUsername(){ return username;}
     public String getEmail(){ return email;}
     public String getPassword(){ return password;}
